@@ -135,6 +135,11 @@ class RichEditorState extends State<RichEditor> {
           visible: widget.editorOptions!.barPosition == BarPosition.BOTTOM,
           child: _buildToolBar(),
         ),
+        ElevatedButton(onPressed: () async {
+
+        }, child: Text("Fetch"))
+
+        //document.getElementById('superman')editor
       ],
     );
   }
@@ -154,7 +159,7 @@ class RichEditorState extends State<RichEditor> {
       await javascriptExecutor.setPadding(widget.editorOptions!.padding!);
     if (widget.editorOptions!.backgroundColor != null)
       await javascriptExecutor
-          .setBackgroundColor(widget.editorOptions!.backgroundColor!);
+          .setBackgroundColor(Colors.white);
     if (widget.editorOptions!.baseTextColor != null)
       await javascriptExecutor
           .setBaseTextColor(widget.editorOptions!.baseTextColor!);

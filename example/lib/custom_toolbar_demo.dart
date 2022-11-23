@@ -10,6 +10,7 @@ class CustomToolbarDemo extends StatefulWidget {
 
 class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
   GlobalKey<RichEditorState> keyEditor = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +19,12 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
       ),
       body: Column(
         children: [
+          ElevatedButton(
+              onPressed: () async {
+                String? html = await keyEditor.currentState?.getHtml();
+                print('######${html}');
+              },
+              child: Text("Get Data")),
           Container(
             height: MediaQuery.of(context).size.height / 2.8,
             child: RichEditor(
@@ -25,7 +32,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
               editorOptions: RichEditorOptions(
                 baseTextColor: Colors.black,
                 placeholder: 'Write about this',
-                padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 10.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                 baseFontFamily: 'Roboto',
                 barPosition: BarPosition.CUSTOM,
               ),
@@ -40,8 +47,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
                     tooltip: '',
                     icon: Icon(Icons.format_bold),
                     onTap: () async {
-                      await keyEditor
-                          .currentState!.javascriptExecutor
+                      await keyEditor.currentState!.javascriptExecutor
                           .setBold();
                     },
                   ),
@@ -49,8 +55,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
                     tooltip: 'Italic',
                     icon: Icon(Icons.format_italic),
                     onTap: () async {
-                      await keyEditor
-                          .currentState!.javascriptExecutor
+                      await keyEditor.currentState!.javascriptExecutor
                           .setItalic();
                     },
                   ),
@@ -58,8 +63,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
                     tooltip: 'Underline',
                     icon: Icon(Icons.format_underline),
                     onTap: () async {
-                      await keyEditor
-                          .currentState!.javascriptExecutor
+                      await keyEditor.currentState!.javascriptExecutor
                           .setUnderline();
                     },
                   ),
@@ -67,8 +71,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
                     tooltip: 'Bullet List',
                     icon: Icon(Icons.format_list_bulleted),
                     onTap: () async {
-                      await keyEditor
-                          .currentState!.javascriptExecutor
+                      await keyEditor.currentState!.javascriptExecutor
                           .insertBulletList();
                     },
                   ),
@@ -76,8 +79,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
                     tooltip: 'Numbered List',
                     icon: Icon(Icons.format_list_numbered),
                     onTap: () async {
-                      await keyEditor
-                          .currentState!.javascriptExecutor
+                      await keyEditor.currentState!.javascriptExecutor
                           .insertNumberedList();
                     },
                   ),
@@ -85,6 +87,7 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
               ),
             ),
           ),
+          Text(keyEditor.currentState?.html.toString() ?? "")
         ],
       ),
     );
