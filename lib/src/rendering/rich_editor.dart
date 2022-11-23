@@ -135,11 +135,6 @@ class RichEditorState extends State<RichEditor> {
           visible: widget.editorOptions!.barPosition == BarPosition.BOTTOM,
           child: _buildToolBar(),
         ),
-        ElevatedButton(onPressed: () async {
-
-        }, child: Text("Fetch"))
-
-        //document.getElementById('superman')editor
       ],
     );
   }
