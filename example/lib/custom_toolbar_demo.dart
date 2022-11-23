@@ -19,12 +19,6 @@ class _CustomToolbarDemoState extends State<CustomToolbarDemo> {
       ),
       body: Column(
         children: [
-          ElevatedButton(
-              onPressed: () async {
-                String? html = await keyEditor.currentState?.getHtml();
-                print('######${html}');
-              },
-              child: Text("Get Data")),
           Container(
             height: MediaQuery.of(context).size.height / 2.8,
             child: RichEditor(
